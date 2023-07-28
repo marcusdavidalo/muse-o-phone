@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muse'O'Phone</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="main">
+      <div class="container">
+        <section id="card-body">
+          <section id="image-container">
+            <div id="image-spacer"></div>
+            <div id="image"></div>
+            <div id="record"></div>
+          </section>
+          <section id="name">
+            <div id="title">Song Name</div>
+            <div id="artist">Artist</div>
+          </section>
+          <section class="music-seeker">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              id="seeker"
+              class="music-seeker-bar"
+            />
+            <span id="currentTime" class="time-display">0:00</span>
+            <span id="maxDuration" class="time-display">0:00</span>
+          </section>
+          <section id="controls">
+            <button id="btn-prev" class="btn"></button>
+            <button id="btn-play" class="btn"></button>
+            <button id="btn-next" class="btn"></button>
+          </section>
+        </section>
+        <section id="explore">
+          <section>
+            <div id="explore-title">
+              <h1>Explore</h1>
+            </div>
+            <div id="explore-tabs">
+              <ul id="explore-tab-list">
+                <li id="lyrics" class="tab-list-item">
+                  <button>Lyrics</button>
+                </li>
+                <li id="other-albums" class="tab-list-item">
+                  <button>Other Albums</button>
+                </li>
+                <li id="related-artists" class="tab-list-item">
+                  <button>Related Artists</button>
+                </li>
+              </ul>
+            </div>
+            <div id="explore-tab-content"></div>
+          </section>
+        </section>
+      </div>
+    </main>
+    <script src="script.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+      integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Agdasima", "Noto Sans JP", "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: larger;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+#main {
+  display: flex;
+  background: url(./assets/images/recordbg.png) no-repeat center center/cover;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  transition: all 1s ease-in-out;
+}
+
+#card-body {
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  width: 22rem;
+  height: 32rem;
+  border-radius: 1rem;
+  border: #000 1px solid;
+  padding: 1.25rem;
+  animation: card-animation 0.75s ease-in-out;
+  backdrop-filter: blur(12px);
+}
+
+#image-container {
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  padding: 1rem 0;
+  height: auto;
+}
+
+#image-spacer {
+  height: 10rem;
+}
+
+#image {
+  background: url(./assets/images/placeholder.jpg) no-repeat center center/cover;
+  position: absolute;
+  left: 4rem;
+  border-radius: 0.75rem;
+  background-color: rgb(50, 50, 50);
+  width: 10rem;
+  height: 10rem;
+  z-index: 10;
+  box-shadow: inset 0 0 100px #000;
+}
+
+#record {
+  background: url(./assets/images/record.png) no-repeat center center/cover;
+  position: absolute;
+  right: 4rem;
+  margin: 0.5rem 0;
+  border-radius: 100%;
+  background-color: rgb(50, 50, 50);
+  width: 9rem;
+  height: 9rem;
+}
+
+#name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  width: 100%;
+  font-weight: 700;
+  color: #000;
+}
+
+#title {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+#artist {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.music-seeker {
+  position: relative;
+  width: 100%;
+  margin: 2.5rem auto;
+  display: flex;
+  align-items: center;
+}
+
+.music-seeker-bar {
+  width: 100%;
+  border-radius: 0.5rem;
+  appearance: none;
+  height: 0.25rem;
+  color: white;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 4px solid black;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  scale: 1.1;
+  transition: all 0.1s ease-in-out;
+}
+
+.time-display {
+  position: absolute;
+  color: white;
+  font-size: 1.2rem;
+}
+
+#currentTime {
+  top: -30px;
+  left: 0;
+}
+
+#maxDuration {
+  top: -30px;
+  right: 0;
+}
+
+#controls {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+  height: 100px;
+}
+
+.btn {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: 100%;
+}
+
+.btn:hover {
+  cursor: pointer;
+  scale: 1.15;
+  transition: all 0.15s ease-in-out;
+}
+
+#btn-prev {
+  background: url(./assets/icons/player-track-prev.svg) no-repeat center
+    center/contain;
+  width: 50px;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+#btn-play {
+  background: url(./assets/icons/player-play.svg) no-repeat center
+    center/contain;
+  width: 100px;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+#btn-next {
+  background: url(./assets/icons/player-track-next.svg) no-repeat center
+    center/contain;
+  width: 50px;
+  padding: 0.5rem 1rem;
+  border: none;
+}
+
+#explore {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  padding: 0 2.5rem;
+  font-size: 50px;
+  /* transform: translateX(-10vw); */
+}
+
+#explore-title {
+  animation: explore-animation 0.75s ease-in-out;
+}
+
+#explore-tab-list {
+  display: flex;
+  list-style-type: none;
+  margin: 1rem 0;
+  animation: explore-animation 1s ease-in-out;
+}
+
+.tab-list-item button {
+  color: #fff;
+  background: none;
+  font-size: 2.5rem;
+  border: none;
+  margin: 0 2.5rem 0 0;
+}
+
+@keyframes explore-animation {
+  0% {
+    transform: translateY(-100vh);
+  }
+  25% {
+    transform: translateY(-100vh);
+  }
+  50% {
+    transform: translateY(-100vh);
+  }
+  75% {
+    transform: translateY(1vh);
+  }
+  90% {
+    transform: translateY(-0.95vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-animation {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1.1) translateX(10vw);
+  }
+  50% {
+    transform: scale(0.98) translateX(10vw);
+  }
+  75% {
+    transform: scale(1) translateX(-1vw);
+  }
+  100% {
+    transform: translateX(0vw);
+  }
+}
