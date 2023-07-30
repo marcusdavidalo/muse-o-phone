@@ -250,6 +250,18 @@ input[type="range"]::-webkit-slider-thumb:hover {
   font-size: 2.5rem;
   border: none;
   margin: 0 2.5rem 0 0;
+  cursor: pointer;
+}
+
+#explore-tab-content,
+p,
+a {
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  max-height: 22rem;
+  overflow-y: hidden;
+  text-decoration: none;
 }
 
 @keyframes explore-animation {
