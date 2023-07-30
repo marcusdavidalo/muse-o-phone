@@ -1,4 +1,3 @@
-// Music Player
 const musicPlayer = {
   seekerBar: document.getElementById("seeker"),
   currentTimeSpan: document.getElementById("currentTime"),
@@ -30,9 +29,9 @@ musicPlayer.init();
 
 // Tab Content
 const tabContent = {
-  lyrics: `<p>Lyrics</p>`,
-  otherAlbums: `<p>Other Albums Content Goes Here</p>`,
-  relatedArtists: `<p>Related Artists Content Goes Here</p>`,
+  lyrics: "",
+  otherAlbums: "",
+  relatedArtists: "",
 };
 
 // Show Respective Tab Content in explore-tab-content Element on DOM
@@ -42,7 +41,7 @@ function showTabContent(tab) {
 }
 
 const API_KEY = "4a864cdc0bmshd2d52f52a4a4b22p171c4ejsnb2bad9112e47";
-const searchQuery = "Ariana Grande";
+const searchQuery = "Junko Ohashi";
 
 const geniusOptions = {
   method: "GET",
@@ -74,6 +73,8 @@ const spotifyOptions = {
   },
 };
 
+const imageElement = document.getElementById("image");
+
 const fetchData = async () => {
   try {
     // Fetch data from Genius API
@@ -97,7 +98,7 @@ const fetchData = async () => {
 
     // Fetch data from Spotify API
     const spotifyResponse = await axios.request(spotifyOptions);
-    console.log("Spotify API response:", spotifyResponse.data);
+    console.log("Spotify API response:", spotifyResponse.data.albums.items[0]);
 
     // Update the DOM with the fetched data
     const titleElement = document.getElementById("title");
@@ -107,26 +108,80 @@ const fetchData = async () => {
     artistElement.textContent =
       geniusResponse.data.hits[0].result.primary_artist.name;
 
-    tabContent.lyrics = lyricsResponse.data.lyrics.lyrics.body.html;
+    tabContent.lyrics =
+      `<div class="lyrics">` +
+      (lyricsResponse.data.lyrics.lyrics.body.html ||
+        "<p>No lyrics found</p>") +
+      `</div>`;
 
-    const imageElement = document.getElementById("image");
-    imageElement.style.backgroundImage = `url(${spotifyResponse.data.albums.items[0].coverArt.sources[0].url})`;
+    imageElement.style.backgroundImage = `url(${spotifyResponse.data.albums.items[0].data.coverArt.sources[0].url})`;
+    imageElement.style.boxShadow = "inset 0 0 0 #00000000";
 
     tabContent.otherAlbums = spotifyResponse.data.albums.items
       .map(
         (album) =>
-          `<div><img src="${album.coverArt.sources[0].url}" alt="${album.name}"><p>${album.name}</p></div>`
+          `<div class="other-albums-container" onclick="showModal('${album.data.name}', '${album.data.artist}')"><div><img src="${album.data.coverArt.sources[0].url}" alt="${album.data.name}"><p>${album.data.name}</p></div></div>`
       )
       .join("");
 
     tabContent.relatedArtists = spotifyResponse.data.artists.items
       .map(
         (artist) =>
-          `<div><img src="${artist.images[0].url}" alt="${artist.name}"><p>${artist.name}</p></div>`
+          `<div class="related-artists-container"><img src="${artist.data.visuals.avatarImage.sources[2].url}" alt="${artist.data.profile.name}"><p>${artist.data.profile.name}</p></div>`
       )
       .join("");
+
+    // Automatically display the Lyrics tab when the page loads
+    showTabContent("lyrics");
   } catch (error) {
     console.error(error);
   }
 };
+
 fetchData();
+
+// Modal functionality
+const modal = document.querySelector(".modal");
+const modalContent = document.querySelector(".modal-content");
+
+function showModal(title, artist) {
+  modalContent.innerHTML = `
+      <img src="${imageElement.style.backgroundImage
+        .slice(4, -1)
+        .replace(/"/g, "")}" alt="${title}">
+      <h2>${title}</h2>
+      <h3>${artist}</h3>
+      <button class="spotify" onclick="redirectToSpotify()">Open in Spotify</button>
+      <button class="play" onclick="playMusic()">Play on Website</button>
+    `;
+
+  modal.style.display = "flex";
+}
+
+function hideModal() {
+  modal.style.display = "none";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  imageElement.addEventListener("click", () => {
+    const title = document.getElementById("title").textContent;
+    const artist = document.getElementById("artist").textContent;
+    showModal(title, artist);
+  });
+
+  window.onclick = function (event) {
+    if (event.target === modal) {
+      hideModal();
+    }
+  };
+});
+
+function redirectToSpotify() {
+  // Implement the redirection to the Spotify website here
+  window.alert("Redirecting to Spotify website...");
+}
+
+function playMusic() {
+  // Implement the music playback on the website here
+  window.alert("Playing the music on the current website...");
+}
