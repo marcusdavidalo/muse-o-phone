@@ -1,11 +1,14 @@
+/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+/* Reset styles for all elements */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+/* Global styles for the body */
 body {
   margin: 0;
   font-family: "Agdasima", "Noto Sans JP", "Segoe UI", "Roboto", "Oxygen",
@@ -16,16 +19,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Remove underlines from anchor tags */
 a {
   text-decoration: none;
 }
 
+/* Center the container and set maximum widths based on breakpoints */
 .container {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
+/* Media queries for responsive container width */
 @media (min-width: 640px) {
   .container {
     max-width: 640px;
@@ -56,6 +62,7 @@ a {
   }
 }
 
+/* Styles for the main section */
 #main {
   display: flex;
   background: url(./assets/images/recordbg.png) no-repeat center center/cover;
@@ -66,6 +73,7 @@ a {
   transition: all 1s ease-in-out;
 }
 
+/* Styles for the card body */
 #card-body {
   position: relative;
   background: rgba(255, 255, 255, 0.7);
@@ -78,6 +86,7 @@ a {
   backdrop-filter: blur(12px);
 }
 
+/* Styles for the image container */
 #image-container {
   display: flex;
   justify-content: center;
@@ -86,10 +95,12 @@ a {
   height: auto;
 }
 
+/* Spacer for image positioning */
 #image-spacer {
   height: 10rem;
 }
 
+/* Styles for the main image */
 #image {
   background: url(./assets/images/placeholder.jpg) no-repeat center center/cover;
   position: absolute;
@@ -102,6 +113,7 @@ a {
   box-shadow: inset 0 0 100px #000;
 }
 
+/* Styles for the record image */
 #record {
   background: url(./assets/images/record.png) no-repeat center center/cover;
   position: absolute;
@@ -113,6 +125,7 @@ a {
   height: 9rem;
 }
 
+/* Styles for the name section */
 #name {
   display: flex;
   flex-direction: column;
@@ -123,16 +136,19 @@ a {
   color: #000;
 }
 
+/* Styles for the title */
 #title {
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
 
+/* Styles for the artist */
 #artist {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
+/* Styles for the music seeker section */
 .music-seeker {
   position: relative;
   width: 100%;
@@ -141,6 +157,7 @@ a {
   align-items: center;
 }
 
+/* Styles for the music seeker bar */
 .music-seeker-bar {
   width: 100%;
   border-radius: 0.5rem;
@@ -149,6 +166,7 @@ a {
   color: white;
 }
 
+/* Styles for the range input slider thumb */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 20px;
@@ -160,27 +178,32 @@ input[type="range"]::-webkit-slider-thumb {
   transition: all 0.2s ease-in-out;
 }
 
+/* Styles for the range input slider thumb on hover */
 input[type="range"]::-webkit-slider-thumb:hover {
   scale: 1.1;
   transition: all 0.1s ease-in-out;
 }
 
+/* Styles for the time display */
 .time-display {
   position: absolute;
   color: white;
   font-size: 1.2rem;
 }
 
+/* Styles for the current time */
 #currentTime {
   top: -30px;
   left: 0;
 }
 
+/* Styles for the maximum duration time */
 #maxDuration {
   top: -30px;
   right: 0;
 }
 
+/* Styles for the music player controls */
 #controls {
   display: flex;
   justify-content: space-around;
@@ -188,18 +211,21 @@ input[type="range"]::-webkit-slider-thumb:hover {
   height: 100px;
 }
 
+/* Styles for the music player buttons */
 .btn {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   border-radius: 100%;
 }
 
+/* Styles for the music player buttons on hover */
 .btn:hover {
   cursor: pointer;
   scale: 1.15;
   transition: all 0.15s ease-in-out;
 }
 
+/* Styles for the previous button */
 #btn-prev {
   background: url(./assets/icons/player-track-prev.svg) no-repeat center
     center/contain;
@@ -208,6 +234,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border: none;
 }
 
+/* Styles for the play button */
 #btn-play {
   background: url(./assets/icons/player-play.svg) no-repeat center
     center/contain;
@@ -216,6 +243,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border: none;
 }
 
+/* Styles for the next button */
 #btn-next {
   background: url(./assets/icons/player-track-next.svg) no-repeat center
     center/contain;
@@ -224,6 +252,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   border: none;
 }
 
+/* Styles for the explore section */
 #explore {
   display: flex;
   flex-direction: column;
@@ -233,10 +262,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
   /* transform: translateX(-10vw); */
 }
 
+/* Styles for the explore title */
 #explore-title {
   animation: explore-animation 0.75s ease-in-out;
 }
 
+/* Styles for the explore tab list */
 #explore-tab-list {
   display: flex;
   list-style-type: none;
@@ -244,6 +275,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
   animation: explore-animation 1s ease-in-out;
 }
 
+/* Styles for the explore tab list item buttons */
 .tab-list-item button {
   color: #fff;
   background: none;
@@ -253,56 +285,73 @@ input[type="range"]::-webkit-slider-thumb:hover {
   cursor: pointer;
 }
 
+/* Styles for explore content, paragraphs, and links */
 #explore-tab-content,
 p,
 a {
   color: #fff;
   font-size: 1.5rem;
   letter-spacing: 0.2rem;
-  max-height: 22rem;
+  max-height: 20rem;
   max-width: 42rem;
-  overflow-y: hidden;
   text-decoration: none;
 }
 
+/* Styles for the explore tab content grid */
 #explore-tab-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  display: flex;
 }
 
+/* Add scrollbar styles for the lyrics */
+.lyrics {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.lyrics::-webkit-scrollbar {
+  display: none;
+}
+
+/* Add styles for album and artist containers */
 .other-albums-container,
 .related-artists-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  transform: rotateY(45deg) skewY(10deg);
+  margin-top: 2rem;
+  margin-right: -150px;
+  object-fit: cover;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+/* Add hover effect for album and artist containers */
+.other-albums-container:hover,
+.related-artists-container:hover {
+  transform: translateY(-10px) translateX(100px) rotateX(10deg);
+  transition: all 0.3s ease-in-out;
+  margin: 5px 0;
+  z-index: 100 !important;
 }
 
 .other-albums-container img,
 .related-artists-container img {
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.other-albums-container p,
-.related-artists-container p {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.other-albums-container:hover,
-.related-artists-container:hover {
-  transform: translateY(-5px);
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
 }
 
 /* Modal Styling */
 
+/* Styles for the modal */
 .modal {
   display: none;
   position: fixed;
@@ -316,17 +365,20 @@ a {
   z-index: 100;
 }
 
+/* Styles for the modal content */
 .modal-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   width: 300px;
+  backdrop-filter: blur(2px);
 }
 
+/* Styles for the modal image */
 .modal-content img {
   width: 200px;
   height: 200px;
@@ -335,16 +387,19 @@ a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Styles for the modal heading 1 */
 .modal-content h2 {
   font-size: 1.8rem;
   font-weight: bold;
 }
 
+/* Styles for the modal heading 3 */
 .modal-content h3 {
   font-size: 1.4rem;
   margin-top: 5px;
 }
 
+/* Styles for the modal buttons */
 .modal-content button {
   margin-top: 20px;
   padding: 10px 20px;
@@ -355,14 +410,17 @@ a {
   cursor: pointer;
 }
 
+/* Styles for the Spotify button */
 .modal-content button.spotify {
   background-color: #1db954;
 }
 
+/* Styles for the play button */
 .modal-content button.play {
   background-color: #ff4d00;
 }
 
+/* Keyframes for the explore section animation */
 @keyframes explore-animation {
   0% {
     transform: translateY(-100vh);
@@ -384,6 +442,7 @@ a {
   }
 }
 
+/* Keyframes for the card animation */
 @keyframes card-animation {
   0% {
     transform: scale(0);

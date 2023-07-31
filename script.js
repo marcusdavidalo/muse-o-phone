@@ -3,13 +3,13 @@ const musicPlayer = {
   currentTimeSpan: document.getElementById("currentTime"),
   maxDurationSpan: document.getElementById("maxDuration"),
 
-  formatTime: (seconds) => {
+  formatTime: function (seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   },
 
-  setSeekerValue: (value) => {
+  setSeekerValue: function (value) {
     this.seekerBar.value = value;
     this.currentTimeSpan.textContent = this.formatTime(value);
   },
@@ -63,9 +63,8 @@ const spotifyOptions = {
   params: {
     q: searchQuery,
     type: "multi",
-    offset: "0",
-    limit: "10",
-    numberOfTopResults: "5",
+    per_page: "10",
+    page: "1",
   },
   headers: {
     "X-RapidAPI-Key": API_KEY,
@@ -119,15 +118,29 @@ const fetchData = async () => {
 
     tabContent.otherAlbums = spotifyResponse.data.albums.items
       .map(
-        (album) =>
-          `<div class="other-albums-container" onclick="showModal('${album.data.name}', '${album.data.artist}')"><div><img src="${album.data.coverArt.sources[0].url}" alt="${album.data.name}"><p>${album.data.name}</p></div></div>`
+        (album, index) =>
+          `<div class="other-albums-container" style="z-index: ${
+            50 - index
+          }" onclick="showModal('${album.data.name}', '${
+            album.data.artist
+          }')"><div class="relative"><img src="${
+            album.data.coverArt.sources[0].url
+          }" alt="${album.data.name}"><p class="absolute">${
+            album.data.name
+          }</p></div></div>`
       )
       .join("");
 
     tabContent.relatedArtists = spotifyResponse.data.artists.items
       .map(
-        (artist) =>
-          `<div class="related-artists-container"><img src="${artist.data.visuals.avatarImage.sources[2].url}" alt="${artist.data.profile.name}"><p>${artist.data.profile.name}</p></div>`
+        (artist, index) =>
+          `<div class="related-artists-container" style="z-index: ${
+            50 - index
+          }"><div class="relative"><img src="${
+            artist.data.visuals.avatarImage.sources[2].url
+          }" alt="${artist.data.profile.name}"><p>${
+            artist.data.profile.name
+          }</p></div></div>`
       )
       .join("");
 
@@ -177,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function redirectToSpotify() {
-  // Implement the redirection to the Spotify website here
+  // Implement redirection to Spotify here
   window.alert("Redirecting to Spotify website...");
 }
 
